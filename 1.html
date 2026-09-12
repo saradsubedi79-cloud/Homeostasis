@@ -1,0 +1,1300 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>Daily Execution Dashboard</title>
+
+
+    <style>
+
+        /* ==================================================
+           GENERAL PAGE
+        ================================================== */
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+
+            font-family:
+                Arial,
+                Helvetica,
+                sans-serif;
+
+            background-color: #f2f4f7;
+
+            color: #222;
+        }
+
+
+        /* ==================================================
+           MAIN DASHBOARD
+        ================================================== */
+
+        .dashboard {
+
+            width: 90%;
+
+            max-width: 950px;
+
+            margin: 30px auto;
+        }
+
+
+        /* ==================================================
+           MAIN TITLE
+        ================================================== */
+
+        .main-title {
+
+            text-align: center;
+
+            margin-bottom: 30px;
+        }
+
+        .main-title h1 {
+
+            font-size: 38px;
+
+            margin-bottom: 10px;
+
+            color: #222;
+        }
+
+        .main-title p {
+
+            color: #666;
+
+            font-size: 17px;
+        }
+
+
+        /* ==================================================
+           GENERAL CARD
+        ================================================== */
+
+        .card {
+
+            background-color: white;
+
+            padding: 25px;
+
+            margin-bottom: 25px;
+
+            border-radius: 15px;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .card h2 {
+
+            margin-top: 0;
+
+            margin-bottom: 20px;
+
+            color: #333;
+        }
+
+
+        /* ==================================================
+           TODAY'S DATE + EXAM COUNTDOWN
+           SAME ROW - 50% / 50%
+        ================================================== */
+
+        .date-exam-row {
+
+            display: flex;
+
+            width: 100%;
+
+            background-color: white;
+
+            border-radius: 15px;
+
+            margin-bottom: 25px;
+
+            overflow: hidden;
+
+            box-shadow:
+                0 4px 12px rgba(0, 0, 0, 0.08);
+        }
+
+
+        /* --------------------------------------------------
+           LEFT HALF - TODAY'S DATE
+        -------------------------------------------------- */
+
+        .date-half {
+
+            width: 50%;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background-color: #fff8e6;
+
+            border-right: 1px solid #ddd;
+        }
+
+        .date-half h2 {
+
+            margin-top: 0;
+
+            margin-bottom: 15px;
+
+            color: #333;
+        }
+
+        #current-date {
+
+            font-size: 22px;
+
+            font-weight: bold;
+
+            color: #e67e22;
+
+            line-height: 1.5;
+        }
+
+
+        /* --------------------------------------------------
+           RIGHT HALF - EXAM COUNTDOWN
+        -------------------------------------------------- */
+
+        .exam-half {
+
+            width: 50%;
+
+            padding: 25px;
+
+            text-align: center;
+
+            background-color: #eef6ff;
+        }
+
+        .exam-half h2 {
+
+            margin-top: 0;
+
+            margin-bottom: 5px;
+
+            color: #333;
+        }
+
+        #exam-date {
+
+            color: #666;
+
+            margin: 5px 0 10px;
+        }
+
+        #exam-days {
+
+            font-size: 55px;
+
+            font-weight: bold;
+
+            color: #007bff;
+
+            margin: 5px 0;
+        }
+
+        .exam-days-text {
+
+            margin: 0;
+
+            color: #555;
+
+            font-size: 16px;
+        }
+
+
+        /* ==================================================
+           TODAY'S EXECUTION
+        ================================================== */
+
+        .execution-list {
+
+            padding-left: 25px;
+        }
+
+        .execution-list li {
+
+            font-size: 17px;
+
+            margin: 13px 0;
+
+            line-height: 1.5;
+        }
+
+
+        /* ==================================================
+           DAILY TASK CHECKLIST
+        ================================================== */
+
+        .task {
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 12px;
+
+            margin: 8px 0;
+
+            background-color: #f7f7f7;
+
+            border-radius: 8px;
+
+            font-size: 16px;
+
+            cursor: pointer;
+        }
+
+        .task input {
+
+            width: 18px;
+
+            height: 18px;
+
+            margin-right: 12px;
+
+            cursor: pointer;
+        }
+
+        .task.completed {
+
+            text-decoration: line-through;
+
+            color: #888;
+
+            background-color: #eeeeee;
+        }
+
+
+        /* ==================================================
+           OS ASSIGNMENT COUNTDOWN
+        ================================================== */
+
+        .countdown-container {
+
+            text-align: center;
+
+            background-color: #eef6ff;
+        }
+
+        .deadline {
+
+            font-size: 18px;
+
+            color: #555;
+        }
+
+        #assignment-days {
+
+            font-size: 75px;
+
+            font-weight: bold;
+
+            color: #007bff;
+
+            margin: 15px 0;
+        }
+
+        .days-text {
+
+            font-size: 18px;
+
+            color: #555;
+        }
+
+
+        /* ==================================================
+           PLANS / LINKS
+        ================================================== */
+
+        .plan-link {
+
+            display: block;
+
+            padding: 14px;
+
+            margin: 10px 0;
+
+            background-color: #f5f5f5;
+
+            border-radius: 8px;
+
+            color: #007bff;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            transition: 0.2s;
+        }
+
+        .plan-link:hover {
+
+            background-color: #e4efff;
+
+            transform: translateX(5px);
+        }
+
+
+        /* ==================================================
+           IMPORTANT LINKS
+        ================================================== */
+
+        .important-link {
+
+            display: block;
+
+            padding: 14px;
+
+            margin: 10px 0;
+
+            border-radius: 8px;
+
+            color: white;
+
+            text-decoration: none;
+
+            font-weight: bold;
+
+            background-color: #333;
+
+            transition: 0.2s;
+        }
+
+        .important-link:hover {
+
+            background-color: #555;
+        }
+
+
+        /* ==================================================
+           JUNG QUOTE
+        ================================================== */
+
+        .quote {
+
+            background-color: #fff0f0;
+
+            border-left:
+                5px solid #e74c3c;
+
+            padding: 20px;
+
+            font-size: 18px;
+
+            line-height: 1.6;
+
+            font-style: italic;
+        }
+
+
+        /* ==================================================
+           FOOTER
+        ================================================== */
+
+        footer {
+
+            text-align: center;
+
+            padding: 25px;
+
+            color: #777;
+
+            font-size: 14px;
+        }
+
+
+        /* ==================================================
+           MOBILE RESPONSIVE
+        ================================================== */
+
+        @media (max-width: 600px) {
+
+            .dashboard {
+
+                width: 95%;
+            }
+
+
+            .main-title h1 {
+
+                font-size: 30px;
+            }
+
+
+            /*
+               Keep date + exam on the same row
+               even on mobile.
+            */
+
+            .date-exam-row {
+
+                flex-direction: row;
+            }
+
+
+            .date-half,
+            .exam-half {
+
+                width: 50%;
+
+                padding: 15px 8px;
+            }
+
+
+            .date-half {
+
+                border-right: 1px solid #ddd;
+
+                border-bottom: none;
+            }
+
+
+            .date-half h2,
+            .exam-half h2 {
+
+                font-size: 16px;
+            }
+
+
+            #current-date {
+
+                font-size: 16px;
+            }
+
+
+            #exam-days {
+
+                font-size: 40px;
+            }
+
+
+            #exam-date {
+
+                font-size: 12px;
+            }
+
+
+            .exam-days-text {
+
+                font-size: 12px;
+            }
+
+
+            #assignment-days {
+
+                font-size: 55px;
+            }
+
+
+            .card {
+
+                padding: 20px;
+            }
+
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+    <!-- ==================================================
+         MAIN DASHBOARD
+    ================================================== -->
+
+    <div class="dashboard">
+
+
+        <!-- ==================================================
+             MAIN TITLE
+        ================================================== -->
+
+        <div class="main-title">
+
+            <h1>
+                🎯 Daily Execution
+            </h1>
+
+            <p>
+                Stay focused. Execute every day.
+            </p>
+
+        </div>
+
+
+
+        <!-- ==================================================
+             TODAY + EXAM COUNTDOWN
+             SAME ROW
+        ================================================== -->
+
+        <div class="date-exam-row">
+
+
+            <!-- LEFT HALF -->
+
+            <div class="date-half">
+
+                <h2>
+                    📅 Today's Date
+                </h2>
+
+                <p id="current-date">
+                    Loading...
+                </p>
+
+            </div>
+
+
+
+            <!-- RIGHT HALF -->
+
+            <div class="exam-half">
+
+                <h2>
+                    🎓 Exam Remaining
+                </h2>
+
+                <p id="exam-date">
+                    Exam: 21 September 2026
+                </p>
+
+                <div id="exam-days">
+                    Loading...
+                </div>
+
+                <p class="exam-days-text">
+                    Days Remaining
+                </p>
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             TODAY'S EXECUTION
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                🔥 Is This Aligning With Your Goals?
+            </h2>
+
+
+            <ol class="execution-list">
+
+
+                <li>
+                    Maintain low cortisol and a calm morning
+                </li>
+
+
+                <li>
+                    Exercise
+                </li>
+
+
+                <li>
+                    Meditation
+                </li>
+
+
+                <li>
+                    Daily 1 hour coding
+                </li>
+
+
+                <li>
+                    Graph-wise study to connect different concepts
+                </li>
+
+
+                <li>
+                    What do I want?
+                </li>
+
+
+                <li>
+                    How much do I want? How hungry am I?
+                </li>
+
+
+                <li>
+                    Learn how to learn
+                </li>
+
+
+                <li>
+                    Book buying business
+                </li>
+
+
+            </ol>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             DAILY TASK CHECKLIST
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                ✅ Today's Task Checklist
+            </h2>
+
+
+            <label class="task">
+
+                <input
+                    type="checkbox"
+                    onchange="completeTask(this)"
+                >
+
+                Exercise
+
+            </label>
+
+
+            <label class="task">
+
+                <input
+                    type="checkbox"
+                    onchange="completeTask(this)"
+                >
+
+                Meditation
+
+            </label>
+
+
+            <label class="task">
+
+                <input
+                    type="checkbox"
+                    onchange="completeTask(this)"
+                >
+
+                1 Hour Coding
+
+            </label>
+
+
+            <label class="task">
+
+                <input
+                    type="checkbox"
+                    onchange="completeTask(this)"
+                >
+
+                Study
+
+            </label>
+
+
+            <label class="task">
+
+                <input
+                    type="checkbox"
+                    onchange="completeTask(this)"
+                >
+
+                Learn Something New
+
+            </label>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             OS ASSIGNMENT COUNTDOWN
+        ================================================== -->
+
+        <div class="card countdown-container">
+
+
+            <h2>
+                📚 OS Assignment
+            </h2>
+
+
+            <p class="deadline">
+
+                Deadline:
+
+                <strong>
+                    25 September 2026
+                </strong>
+
+            </p>
+
+
+            <div id="assignment-days">
+                Loading...
+            </div>
+
+
+            <p class="days-text">
+                Days Remaining
+            </p>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             GOALS & PLANS
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                📈 Goals, Accounts & Plans
+            </h2>
+
+
+            <a
+                href="Weekplan.html"
+                class="plan-link"
+                target="_blank">
+
+                📅 Week Plan
+
+            </a>
+
+
+            <a
+                href="Fifteenday.html"
+                class="plan-link"
+                target="_blank">
+
+                📆 15 Day Plan
+
+            </a>
+
+
+            <a
+                href="Month.html"
+                class="plan-link"
+                target="_blank">
+
+                🗓️ Month Plan
+
+            </a>
+
+
+            <a
+                href="sixmonth.html"
+                class="plan-link"
+                target="_blank">
+
+                📊 6 Month Plan
+
+            </a>
+
+
+            <a
+                href="yearplan.html"
+                class="plan-link"
+                target="_blank">
+
+                🚀 Year Plan
+
+            </a>
+
+
+            <a
+                href="2028.html"
+                class="plan-link"
+                target="_blank">
+
+                🎓 Degree Finish
+
+            </a>
+
+
+            <a
+                href="lifegoal.html"
+                class="plan-link"
+                target="_blank">
+
+                🌎 Life Goals
+
+            </a>
+
+
+            <a
+                href="A.html"
+                class="plan-link"
+                target="_blank">
+
+                📚 Academics
+
+            </a>
+
+
+            <a
+                href="books&m.html"
+                class="plan-link"
+                target="_blank">
+
+                📖 Books & M
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             DAILY LECTURE TOPICS
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                🎓 Daily Lecture Topics
+            </h2>
+
+
+            <a
+                href="https://docs.google.com/document/d/11SOzcFXCIs3xUjCui2v8FZaLxFQstxvO2KsJU9jT2Uw/edit?tab=t.0"
+                class="important-link"
+                target="_blank">
+
+                📝 Open Daily Lecture Topics
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             ACCOUNTS
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                💰 Accounts
+            </h2>
+
+
+            <a
+                href="https://docs.google.com/spreadsheets/d/12s1DD14pTavIirGBXzlGD8m5AK8PCZVOyCPm0NMmtnM/edit?hl=id&gid=1986255878#gid=1986255878"
+                class="important-link"
+                target="_blank">
+
+                📊 Open Accounts Spreadsheet
+
+            </a>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             JUNG QUOTE
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                🧠 Reminder
+            </h2>
+
+
+            <div class="quote">
+
+
+                "Until and unless you make the unconscious
+                conscious, it will direct your life and you
+                will call it fate."
+
+
+                <br><br>
+
+
+                — Carl Gustav Jung
+
+
+            </div>
+
+
+        </div>
+
+
+
+        <!-- ==================================================
+             GOOGLE FORM
+        ================================================== -->
+
+        <div class="card">
+
+
+            <h2>
+                📝 Daily Form
+            </h2>
+
+
+            <a
+                href="https://forms.gle/mwV7CVQP67yDFUER6"
+                class="important-link"
+                target="_blank">
+
+                Open Google Form
+
+            </a>
+
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- ==================================================
+         FOOTER
+    ================================================== -->
+
+    <footer>
+
+        Daily Execution Dashboard © 2026
+
+    </footer>
+
+
+
+    <!-- ==================================================
+         JAVASCRIPT
+         KEEP THIS AT THE BOTTOM
+    ================================================== -->
+
+    <script>
+
+
+        /* ==================================================
+           1. DISPLAY TODAY'S DATE
+        ================================================== */
+
+        function displayCurrentDate() {
+
+
+            const today = new Date();
+
+
+            const options = {
+
+                weekday: "long",
+
+                year: "numeric",
+
+                month: "long",
+
+                day: "numeric"
+
+            };
+
+
+            const formattedDate =
+
+                today.toLocaleDateString(
+                    "en-IN",
+                    options
+                );
+
+
+            document.getElementById(
+                "current-date"
+            ).textContent = formattedDate;
+
+
+        }
+
+
+
+        /* ==================================================
+           2. CALCULATE REMAINING DAYS
+
+           This function can be reused for:
+           - Exam
+           - Assignment
+           - Any future deadline
+        ================================================== */
+
+        function calculateDaysRemaining(
+            targetDateString,
+            elementId
+        ) {
+
+
+            // Get today's date
+
+            const today = new Date();
+
+
+            // Get target date
+
+            const targetDate =
+                new Date(targetDateString);
+
+
+            // Remove time from today's date
+
+            today.setHours(
+                0,
+                0,
+                0,
+                0
+            );
+
+
+            // Remove time from target date
+
+            targetDate.setHours(
+                0,
+                0,
+                0,
+                0
+            );
+
+
+            // Calculate difference
+
+            const difference =
+
+                targetDate.getTime()
+                -
+                today.getTime();
+
+
+            // Convert milliseconds to days
+
+            const daysRemaining =
+
+                Math.ceil(
+
+                    difference /
+                    (
+                        1000 *
+                        60 *
+                        60 *
+                        24
+                    )
+
+                );
+
+
+            // Find HTML element
+
+            const element =
+
+                document.getElementById(
+                    elementId
+                );
+
+
+            // Display result
+
+            if (daysRemaining > 0) {
+
+
+                element.textContent =
+
+                    daysRemaining;
+
+
+            }
+
+            else if (daysRemaining === 0) {
+
+
+                element.textContent =
+                    "Today!";
+
+
+            }
+
+            else {
+
+
+                element.textContent =
+                    "Completed";
+
+
+            }
+
+        }
+
+
+
+        /* ==================================================
+           3. COMPLETE TASK
+        ================================================== */
+
+        function completeTask(checkbox) {
+
+
+            const task =
+                checkbox.parentElement;
+
+
+            if (checkbox.checked) {
+
+
+                task.classList.add(
+                    "completed"
+                );
+
+
+            }
+
+            else {
+
+
+                task.classList.remove(
+                    "completed"
+                );
+
+
+            }
+
+        }
+
+
+
+        /* ==================================================
+           4. RUN TODAY'S DATE
+        ================================================== */
+
+        displayCurrentDate();
+
+
+
+        /* ==================================================
+           5. EXAM COUNTDOWN
+
+           CHANGE THIS DATE WHEN YOUR EXAM DATE CHANGES.
+
+           Format:
+
+           YYYY-MM-DD
+
+           Example:
+
+           27 September 2026
+           = 2026-09-27
+        ================================================== */
+
+        calculateDaysRemaining(
+
+            "2026-09-21",
+
+            "exam-days"
+
+        );
+
+
+
+        /* ==================================================
+           6. OS ASSIGNMENT COUNTDOWN
+        ================================================== */
+
+        calculateDaysRemaining(
+
+            "2026-09-25",
+
+            "assignment-days"
+
+        );
+
+
+
+        /* ==================================================
+           7. AUTOMATIC UPDATE
+
+           Update the date and countdown every hour.
+        ================================================== */
+
+        setInterval(function () {
+
+
+            // Update today's date
+
+            displayCurrentDate();
+
+
+            // Update exam countdown
+
+            calculateDaysRemaining(
+
+                "2026-09-21",
+
+                "exam-days"
+
+            );
+
+
+            // Update assignment countdown
+
+            calculateDaysRemaining(
+
+                "2026-09-25",
+
+                "assignment-days"
+
+            );
+
+
+        }, 1000 * 60 * 60);
+
+
+    </script>
+
+
+</body>
+
+</html>
+```
