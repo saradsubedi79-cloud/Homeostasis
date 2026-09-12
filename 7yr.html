@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top 4 Skills to Master by Age 30</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            color: white;
+            margin-bottom: 50px;
+            padding-top: 30px;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+
+        header p {
+            font-size: 1.2em;
+            opacity: 0.9;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+            margin-bottom: 50px;
+        }
+
+        .skill-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .skill-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .skill-header {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .skill-header h2 {
+            font-size: 1.8em;
+            margin-bottom: 10px;
+        }
+
+        .skill-icon {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+
+        .skill-content {
+            padding: 25px;
+        }
+
+        .skill-content h3 {
+            color: #667eea;
+            margin-bottom: 15px;
+            font-size: 1.2em;
+        }
+
+        .skill-content p {
+            color: #555;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            font-size: 0.95em;
+        }
+
+        .skill-list {
+            list-style: none;
+            margin: 15px 0;
+        }
+
+        .skill-list li {
+            color: #666;
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            padding-left: 25px;
+            position: relative;
+        }
+
+        .skill-list li:last-child {
+            border-bottom: none;
+        }
+
+        .skill-list li:before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .why-important {
+            background: #f5f5f5;
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+            border-left: 4px solid #667eea;
+        }
+
+        .why-important p {
+            color: #666;
+            font-size: 0.9em;
+            margin: 0;
+            line-height: 1.5;
+        }
+
+        footer {
+            text-align: center;
+            color: white;
+            padding: 30px;
+            margin-top: 50px;
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8em;
+            }
+
+            header p {
+                font-size: 1em;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🎯 Top 4 Skills to Master by Age 30</h1>
+            <p>Essential competencies for success in the modern digital economy</p>
+        </header>
+
+        <div class="skills-grid">
+            <!-- Skill 1: Machine Learning -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon">🤖</div>
+                    <h2>Machine Learning</h2>
+                </div>
+                <div class="skill-content">
+                    <h3>Why Master This?</h3>
+                    <p>Machine Learning is revolutionizing every industry, from healthcare to finance, making it one of the most in-demand skills in tech.</p>
+                    
+                    <h3>Key Areas to Focus:</h3>
+                    <ul class="skill-list">
+                        <li>Supervised Learning Algorithms</li>
+                        <li>Unsupervised Learning & Clustering</li>
+                        <li>Neural Networks & Deep Learning</li>
+                        <li>Model Evaluation & Validation</li>
+                        <li>Feature Engineering</li>
+                    </ul>
+
+                    <h3>Tools & Languages:</h3>
+                    <ul class="skill-list">
+                        <li>Python (NumPy, Pandas, Scikit-learn)</li>
+                        <li>TensorFlow & PyTorch</li>
+                        <li>Jupyter Notebooks</li>
+                    </ul>
+
+                    <div class="why-important">
+                        <p><strong>Career Impact:</strong> ML engineers earn $150K-$250K+ annually. Mastering this skill opens doors to countless opportunities.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill 2: Artificial Intelligence -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon">⚡</div>
+                    <h2>Artificial Intelligence</h2>
+                </div>
+                <div class="skill-content">
+                    <h3>Why Master This?</h3>
+                    <p>AI is transforming how we work and live. From LLMs to autonomous systems, AI skills are increasingly essential across all tech roles.</p>
+                    
+                    <h3>Key Areas to Focus:</h3>
+                    <ul class="skill-list">
+                        <li>Natural Language Processing (NLP)</li>
+                        <li>Computer Vision</li>
+                        <li>Large Language Models (LLMs)</li>
+                        <li>Generative AI & Prompt Engineering</li>
+                        <li>Reinforcement Learning</li>
+                    </ul>
+
+                    <h3>Tools & Technologies:</h3>
+                    <ul class="skill-list">
+                        <li>OpenAI APIs, GPT Models</li>
+                        <li>Hugging Face Transformers</li>
+                        <li>LangChain & Vector Databases</li>
+                    </ul>
+
+                    <div class="why-important">
+                        <p><strong>Future-Ready:</strong> AI is reshaping the job market. Early adoption of AI skills gives you a significant competitive advantage.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill 3: Cloud Architecture & DevOps -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon">☁️</div>
+                    <h2>Cloud Architecture & DevOps</h2>
+                </div>
+                <div class="skill-content">
+                    <h3>Why Master This?</h3>
+                    <p>Nearly all modern applications run on cloud platforms. Understanding cloud architecture and DevOps practices is essential for building scalable solutions.</p>
+                    
+                    <h3>Key Areas to Focus:</h3>
+                    <ul class="skill-list">
+                        <li>AWS, Azure, or Google Cloud Platforms</li>
+                        <li>Containerization (Docker & Kubernetes)</li>
+                        <li>CI/CD Pipelines</li>
+                        <li>Infrastructure as Code (IaC)</li>
+                        <li>Cloud Security & Compliance</li>
+                    </ul>
+
+                    <h3>Certifications to Pursue:</h3>
+                    <ul class="skill-list">
+                        <li>AWS Solutions Architect</li>
+                        <li>Kubernetes Administrator (CKA)</li>
+                        <li>Azure Administrator</li>
+                    </ul>
+
+                    <div class="why-important">
+                        <p><strong>Market Demand:</strong> DevOps engineers are among the highest-paid professionals. Certified cloud architects command premium salaries.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Skill 4: Data Science & Analytics -->
+            <div class="skill-card">
+                <div class="skill-header">
+                    <div class="skill-icon">📊</div>
+                    <h2>Data Science & Analytics</h2>
+                </div>
+                <div class="skill-content">
+                    <h3>Why Master This?</h3>
+                    <p>Data-driven decision making is critical. Data scientists who can extract insights from large datasets are invaluable to organizations.</p>
+                    
+                    <h3>Key Areas to Focus:</h3>
+                    <ul class="skill-list">
+                        <li>Statistical Analysis & Hypothesis Testing</li>
+                        <li>Data Visualization & Storytelling</li>
+                        <li>SQL & Database Management</li>
+                        <li>Business Intelligence Tools</li>
+                        <li>A/B Testing & Experimentation</li>
+                    </ul>
+
+                    <h3>Tools & Technologies:</h3>
+                    <ul class="skill-list">
+                        <li>Python (Matplotlib, Seaborn, Plotly)</li>
+                        <li>SQL & NoSQL Databases</li>
+                        <li>Tableau, Power BI, Looker</li>
+                    </ul>
+
+                    <div class="why-important">
+                        <p><strong>Business Value:</strong> Data scientists drive strategic decisions. Companies rely on data insights for competitive advantage.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <h2>Start Your Journey Today! 🚀</h2>
+            <p>The best time to start learning these skills was yesterday. The second best time is now.</p>
+            <p style="margin-top: 20px; opacity: 0.8;">Remember: Consistency beats perfection. Start small, practice regularly, and build expertise over time.</p>
+        </footer>
+    </div>
+    
+</body>
+</html>
